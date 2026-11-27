@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>俄罗斯方块 · Tetris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="brand">
+      <h1>TETRIS</h1>
+      <p class="subtitle">俄罗斯方块</p>
+    </header>
+
+    <main class="stage">
+      <aside class="panel panel-left">
+        <div class="stat">
+          <span class="label">分数</span>
+          <span id="score" class="value">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">行数</span>
+          <span id="lines" class="value">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">等级</span>
+          <span id="level" class="value">1</span>
+        </div>
+      </aside>
+
+      <section class="board-wrap">
+        <canvas id="board" width="300" height="600" aria-label="游戏区域"></canvas>
+        <div id="overlay" class="overlay hidden" role="dialog" aria-live="polite">
+          <p id="overlay-title" class="overlay-title">游戏结束</p>
+          <p id="overlay-score" class="overlay-score"></p>
+          <button type="button" id="restart-btn" class="btn primary">再来一局</button>
+        </div>
+      </section>
+
+      <aside class="panel panel-right">
+        <div class="next-box">
+          <span class="label">下一个</span>
+          <canvas id="next" width="120" height="120" aria-label="下一个方块"></canvas>
+        </div>
+        <button type="button" id="pause-btn" class="btn">暂停</button>
+        <div class="help">
+          <p><kbd>←</kbd><kbd>→</kbd> 移动</p>
+          <p><kbd>↑</kbd> 旋转</p>
+          <p><kbd>↓</kbd> 软降</p>
+          <p><kbd>空格</kbd> 硬降</p>
+          <p><kbd>P</kbd> 暂停</p>
+        </div>
+      </aside>
+    </main>
+
+    <nav class="touch-controls" aria-label="触控操作">
+      <button type="button" data-action="left" class="btn pad">←</button>
+      <button type="button" data-action="rotate" class="btn pad">↻</button>
+      <button type="button" data-action="right" class="btn pad">→</button>
+      <button type="button" data-action="soft" class="btn pad">↓</button>
+      <button type="button" data-action="hard" class="btn pad accent">⇣</button>
+    </nav>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
